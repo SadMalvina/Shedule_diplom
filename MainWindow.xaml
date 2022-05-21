@@ -1,0 +1,43 @@
+﻿<Window x:Class="Shedule_diplom.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Shedule_diplom"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1000">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FF0AD2E6" Offset="0"/>
+                <GradientStop Color="#FF959A9F" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="65*"/>
+            <RowDefinition Height="329*"/>
+            <RowDefinition Height="25*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF40D1CA" Offset="0.009"/>
+                    <GradientStop Color="White" Offset="0.961"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Image Source="C:\Users\Геляяяяяя\source\repos\Shedule_diplom\Resources\Логотип_2.png" HorizontalAlignment="Left"  Visibility="Visible" Width="91" RenderTransformOrigin="1.022,0.511" Margin="30, 0, 0, 0"/>
+            <TextBlock Text="TimeWork" FontWeight="Bold" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Comic Sans MS" TextAlignment="Center"/>
+            
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF0AD2E6" Offset="0.725"/>
+                    <GradientStop Color="White" Offset="0.026"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <TextBlock VerticalAlignment="Center" Margin="0, 0, 20, 0" Text="По всем вопросам обращаться по адресу: angelina.berezhnova@yandex.ru" FontSize="14" TextAlignment="Right"/>
+        </Grid>
+        <Frame Grid.Row="1" Name="MainFrame"/>
+    </Grid>
+</Window>

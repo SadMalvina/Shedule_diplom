@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shedule_diplom", "Shedule_diplom.csproj", "{316E1D39-387C-4F65-83CC-9039DE3AA24E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{316E1D39-387C-4F65-83CC-9039DE3AA24E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{316E1D39-387C-4F65-83CC-9039DE3AA24E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{316E1D39-387C-4F65-83CC-9039DE3AA24E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{316E1D39-387C-4F65-83CC-9039DE3AA24E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F2A7C229-52B6-486C-8283-F2CDE9AAFF72}
+	EndGlobalSection
+EndGlobal

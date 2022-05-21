@@ -1,0 +1,505 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище RaspisanieModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Charts">
+          <Key>
+            <PropertyRef Name="ID_chart" />
+          </Key>
+          <Property Name="ID_chart" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Chart_name" Type="varchar" MaxLength="120" />
+        </EntityType>
+        <EntityType Name="DaysOfWeek">
+          <Key>
+            <PropertyRef Name="ID_dayOfWeek" />
+          </Key>
+          <Property Name="ID_dayOfWeek" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_dayOfWeek" Type="varchar" MaxLength="50" />
+          <Property Name="Abbreviature_dayOfWeek" Type="char" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="DaysStatuses">
+          <Key>
+            <PropertyRef Name="ID_statusDay" />
+          </Key>
+          <Property Name="ID_statusDay" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_statusDay" Type="varchar" MaxLength="50" />
+          <Property Name="Abbreviaion_name_statusDay" Type="char" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="Departaments">
+          <Key>
+            <PropertyRef Name="ID_departament" />
+          </Key>
+          <Property Name="ID_departament" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Departament_name" Type="varchar" MaxLength="64" />
+          <Property Name="ID_departamentHead" Type="int" />
+          <Property Name="Salary_per_hour_of_work" Type="money" />
+          <Property Name="Hourly_rate" Type="int" />
+          <Property Name="Salary_per_hour_of_sick_leave" Type="money" />
+          <Property Name="NDFL" Type="int" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="ID_employee" />
+          </Key>
+          <Property Name="ID_employee" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Last_name" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Middle_name" Type="varchar" MaxLength="50" />
+          <Property Name="ID_departament" Type="int" />
+          <Property Name="ID_chart" Type="int" />
+          <Property Name="ID_status" Type="int" />
+          <Property Name="NickName" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Shedule">
+          <Key>
+            <PropertyRef Name="ID_record" />
+          </Key>
+          <Property Name="ID_record" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_employee" Type="int" />
+          <Property Name="ID_chart" Type="int" />
+          <Property Name="Date" Type="date" />
+          <Property Name="ID_statusDay" Type="int" />
+          <Property Name="ID_dayOfWeek" Type="int" />
+        </EntityType>
+        <EntityType Name="Statuses">
+          <Key>
+            <PropertyRef Name="ID_status" />
+          </Key>
+          <Property Name="ID_status" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status_name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Employees_Departaments">
+          <End Role="Departaments" Type="Self.Departaments" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departaments">
+              <PropertyRef Name="ID_departament" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="ID_departament" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_Statuses">
+          <End Role="Statuses" Type="Self.Statuses" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statuses">
+              <PropertyRef Name="ID_status" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="ID_status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shedule_Charts">
+          <End Role="Charts" Type="Self.Charts" Multiplicity="0..1" />
+          <End Role="Shedule" Type="Self.Shedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Charts">
+              <PropertyRef Name="ID_chart" />
+            </Principal>
+            <Dependent Role="Shedule">
+              <PropertyRef Name="ID_chart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shedule_DaysOfWeek">
+          <End Role="DaysOfWeek" Type="Self.DaysOfWeek" Multiplicity="0..1" />
+          <End Role="Shedule" Type="Self.Shedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DaysOfWeek">
+              <PropertyRef Name="ID_dayOfWeek" />
+            </Principal>
+            <Dependent Role="Shedule">
+              <PropertyRef Name="ID_dayOfWeek" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shedule_DaysStatuses">
+          <End Role="DaysStatuses" Type="Self.DaysStatuses" Multiplicity="0..1" />
+          <End Role="Shedule" Type="Self.Shedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DaysStatuses">
+              <PropertyRef Name="ID_statusDay" />
+            </Principal>
+            <Dependent Role="Shedule">
+              <PropertyRef Name="ID_statusDay" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shedule_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+          <End Role="Shedule" Type="Self.Shedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID_employee" />
+            </Principal>
+            <Dependent Role="Shedule">
+              <PropertyRef Name="ID_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище RaspisanieModelContainer">
+          <EntitySet Name="Charts" EntityType="Self.Charts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DaysOfWeek" EntityType="Self.DaysOfWeek" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DaysStatuses" EntityType="Self.DaysStatuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departaments" EntityType="Self.Departaments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shedule" EntityType="Self.Shedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Statuses" EntityType="Self.Statuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Employees_Departaments" Association="Self.FK_Employees_Departaments">
+            <End Role="Departaments" EntitySet="Departaments" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_Statuses" Association="Self.FK_Employees_Statuses">
+            <End Role="Statuses" EntitySet="Statuses" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shedule_Charts" Association="Self.FK_Shedule_Charts">
+            <End Role="Charts" EntitySet="Charts" />
+            <End Role="Shedule" EntitySet="Shedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shedule_DaysOfWeek" Association="Self.FK_Shedule_DaysOfWeek">
+            <End Role="DaysOfWeek" EntitySet="DaysOfWeek" />
+            <End Role="Shedule" EntitySet="Shedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shedule_DaysStatuses" Association="Self.FK_Shedule_DaysStatuses">
+            <End Role="DaysStatuses" EntitySet="DaysStatuses" />
+            <End Role="Shedule" EntitySet="Shedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shedule_Employees" Association="Self.FK_Shedule_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Shedule" EntitySet="Shedule" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RaspisanieModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Charts">
+          <Key>
+            <PropertyRef Name="ID_chart" />
+          </Key>
+          <Property Name="ID_chart" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Chart_name" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Shedule" Relationship="Self.FK_Shedule_Charts" FromRole="Charts" ToRole="Shedule" />
+        </EntityType>
+        <EntityType Name="DaysOfWeek">
+          <Key>
+            <PropertyRef Name="ID_dayOfWeek" />
+          </Key>
+          <Property Name="ID_dayOfWeek" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_dayOfWeek" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Abbreviature_dayOfWeek" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Shedule" Relationship="Self.FK_Shedule_DaysOfWeek" FromRole="DaysOfWeek" ToRole="Shedule" />
+        </EntityType>
+        <EntityType Name="DaysStatuses">
+          <Key>
+            <PropertyRef Name="ID_statusDay" />
+          </Key>
+          <Property Name="ID_statusDay" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_statusDay" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Abbreviaion_name_statusDay" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Shedule" Relationship="Self.FK_Shedule_DaysStatuses" FromRole="DaysStatuses" ToRole="Shedule" />
+        </EntityType>
+        <EntityType Name="Departaments">
+          <Key>
+            <PropertyRef Name="ID_departament" />
+          </Key>
+          <Property Name="ID_departament" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Departament_name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="ID_departamentHead" Type="Int32" />
+          <Property Name="Salary_per_hour_of_work" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Hourly_rate" Type="Int32" />
+          <Property Name="Salary_per_hour_of_sick_leave" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="NDFL" Type="Int32" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_Departaments" FromRole="Departaments" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="ID_employee" />
+          </Key>
+          <Property Name="ID_employee" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Middle_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_departament" Type="Int32" />
+          <Property Name="ID_chart" Type="Int32" />
+          <Property Name="ID_status" Type="Int32" />
+          <Property Name="NickName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Departaments" Relationship="Self.FK_Employees_Departaments" FromRole="Employees" ToRole="Departaments" />
+          <NavigationProperty Name="Statuses" Relationship="Self.FK_Employees_Statuses" FromRole="Employees" ToRole="Statuses" />
+          <NavigationProperty Name="Shedule" Relationship="Self.FK_Shedule_Employees" FromRole="Employees" ToRole="Shedule" />
+        </EntityType>
+        <EntityType Name="Shedule">
+          <Key>
+            <PropertyRef Name="ID_record" />
+          </Key>
+          <Property Name="ID_record" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_employee" Type="Int32" />
+          <Property Name="ID_chart" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="ID_statusDay" Type="Int32" />
+          <Property Name="ID_dayOfWeek" Type="Int32" />
+          <NavigationProperty Name="Charts" Relationship="Self.FK_Shedule_Charts" FromRole="Shedule" ToRole="Charts" />
+          <NavigationProperty Name="DaysOfWeek" Relationship="Self.FK_Shedule_DaysOfWeek" FromRole="Shedule" ToRole="DaysOfWeek" />
+          <NavigationProperty Name="DaysStatuses" Relationship="Self.FK_Shedule_DaysStatuses" FromRole="Shedule" ToRole="DaysStatuses" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Shedule_Employees" FromRole="Shedule" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="Statuses">
+          <Key>
+            <PropertyRef Name="ID_status" />
+          </Key>
+          <Property Name="ID_status" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_Statuses" FromRole="Statuses" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Shedule_Charts">
+          <End Role="Charts" Type="Self.Charts" Multiplicity="0..1" />
+          <End Role="Shedule" Type="Self.Shedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Charts">
+              <PropertyRef Name="ID_chart" />
+            </Principal>
+            <Dependent Role="Shedule">
+              <PropertyRef Name="ID_chart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shedule_DaysOfWeek">
+          <End Role="DaysOfWeek" Type="Self.DaysOfWeek" Multiplicity="0..1" />
+          <End Role="Shedule" Type="Self.Shedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DaysOfWeek">
+              <PropertyRef Name="ID_dayOfWeek" />
+            </Principal>
+            <Dependent Role="Shedule">
+              <PropertyRef Name="ID_dayOfWeek" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shedule_DaysStatuses">
+          <End Role="DaysStatuses" Type="Self.DaysStatuses" Multiplicity="0..1" />
+          <End Role="Shedule" Type="Self.Shedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DaysStatuses">
+              <PropertyRef Name="ID_statusDay" />
+            </Principal>
+            <Dependent Role="Shedule">
+              <PropertyRef Name="ID_statusDay" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_Departaments">
+          <End Role="Departaments" Type="Self.Departaments" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departaments">
+              <PropertyRef Name="ID_departament" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="ID_departament" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_Statuses">
+          <End Role="Statuses" Type="Self.Statuses" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statuses">
+              <PropertyRef Name="ID_status" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="ID_status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shedule_Employees">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+          <End Role="Shedule" Type="Self.Shedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID_employee" />
+            </Principal>
+            <Dependent Role="Shedule">
+              <PropertyRef Name="ID_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RaspisanieEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Charts" EntityType="Self.Charts" />
+          <EntitySet Name="DaysOfWeek" EntityType="Self.DaysOfWeek" />
+          <EntitySet Name="DaysStatuses" EntityType="Self.DaysStatuses" />
+          <EntitySet Name="Departaments" EntityType="Self.Departaments" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" />
+          <EntitySet Name="Shedule" EntityType="Self.Shedule" />
+          <EntitySet Name="Statuses" EntityType="Self.Statuses" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_Shedule_Charts" Association="Self.FK_Shedule_Charts">
+            <End Role="Charts" EntitySet="Charts" />
+            <End Role="Shedule" EntitySet="Shedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shedule_DaysOfWeek" Association="Self.FK_Shedule_DaysOfWeek">
+            <End Role="DaysOfWeek" EntitySet="DaysOfWeek" />
+            <End Role="Shedule" EntitySet="Shedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shedule_DaysStatuses" Association="Self.FK_Shedule_DaysStatuses">
+            <End Role="DaysStatuses" EntitySet="DaysStatuses" />
+            <End Role="Shedule" EntitySet="Shedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_Departaments" Association="Self.FK_Employees_Departaments">
+            <End Role="Departaments" EntitySet="Departaments" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_Statuses" Association="Self.FK_Employees_Statuses">
+            <End Role="Statuses" EntitySet="Statuses" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shedule_Employees" Association="Self.FK_Shedule_Employees">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Shedule" EntitySet="Shedule" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище RaspisanieModelContainer" CdmEntityContainer="RaspisanieEntities1">
+          <EntitySetMapping Name="Charts">
+            <EntityTypeMapping TypeName="RaspisanieModel.Charts">
+              <MappingFragment StoreEntitySet="Charts">
+                <ScalarProperty Name="ID_chart" ColumnName="ID_chart" />
+                <ScalarProperty Name="Chart_name" ColumnName="Chart_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DaysOfWeek">
+            <EntityTypeMapping TypeName="RaspisanieModel.DaysOfWeek">
+              <MappingFragment StoreEntitySet="DaysOfWeek">
+                <ScalarProperty Name="ID_dayOfWeek" ColumnName="ID_dayOfWeek" />
+                <ScalarProperty Name="Name_dayOfWeek" ColumnName="Name_dayOfWeek" />
+                <ScalarProperty Name="Abbreviature_dayOfWeek" ColumnName="Abbreviature_dayOfWeek" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DaysStatuses">
+            <EntityTypeMapping TypeName="RaspisanieModel.DaysStatuses">
+              <MappingFragment StoreEntitySet="DaysStatuses">
+                <ScalarProperty Name="ID_statusDay" ColumnName="ID_statusDay" />
+                <ScalarProperty Name="Name_statusDay" ColumnName="Name_statusDay" />
+                <ScalarProperty Name="Abbreviaion_name_statusDay" ColumnName="Abbreviaion_name_statusDay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departaments">
+            <EntityTypeMapping TypeName="RaspisanieModel.Departaments">
+              <MappingFragment StoreEntitySet="Departaments">
+                <ScalarProperty Name="ID_departament" ColumnName="ID_departament" />
+                <ScalarProperty Name="Departament_name" ColumnName="Departament_name" />
+                <ScalarProperty Name="ID_departamentHead" ColumnName="ID_departamentHead" />
+                <ScalarProperty Name="Salary_per_hour_of_work" ColumnName="Salary_per_hour_of_work" />
+                <ScalarProperty Name="Hourly_rate" ColumnName="Hourly_rate" />
+                <ScalarProperty Name="Salary_per_hour_of_sick_leave" ColumnName="Salary_per_hour_of_sick_leave" />
+                <ScalarProperty Name="NDFL" ColumnName="NDFL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="RaspisanieModel.Employees">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="ID_employee" ColumnName="ID_employee" />
+                <ScalarProperty Name="Last_name" ColumnName="Last_name" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Middle_name" ColumnName="Middle_name" />
+                <ScalarProperty Name="ID_departament" ColumnName="ID_departament" />
+                <ScalarProperty Name="ID_chart" ColumnName="ID_chart" />
+                <ScalarProperty Name="ID_status" ColumnName="ID_status" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shedule">
+            <EntityTypeMapping TypeName="RaspisanieModel.Shedule">
+              <MappingFragment StoreEntitySet="Shedule">
+                <ScalarProperty Name="ID_record" ColumnName="ID_record" />
+                <ScalarProperty Name="ID_employee" ColumnName="ID_employee" />
+                <ScalarProperty Name="ID_chart" ColumnName="ID_chart" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ID_statusDay" ColumnName="ID_statusDay" />
+                <ScalarProperty Name="ID_dayOfWeek" ColumnName="ID_dayOfWeek" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Statuses">
+            <EntityTypeMapping TypeName="RaspisanieModel.Statuses">
+              <MappingFragment StoreEntitySet="Statuses">
+                <ScalarProperty Name="ID_status" ColumnName="ID_status" />
+                <ScalarProperty Name="Status_name" ColumnName="Status_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="RaspisanieModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
