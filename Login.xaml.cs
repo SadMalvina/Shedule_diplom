@@ -27,13 +27,11 @@ namespace Shedule_diplom
 
     private void Entering_Click(object sender, RoutedEventArgs e)
         {
-            var Users = RaspisanieEntities1.GetContext().Employees.ToList();
+            var Users = RaspisanieeEntities.GetContext().Employees.ToList();
 
             bool Prov = false;
             foreach (var item in Users)
             {
-                //RaspisanieEntities1.GetContext().Employees.Find(Nikname.Text);
-                //var item2 = RaspisanieEntities1.GetContext().Employees.Find(Nikname.Text);
 
                 if ((Nikname.Text == item.NickName) && (Password.Password == item.Password))
                 {

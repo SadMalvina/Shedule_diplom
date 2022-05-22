@@ -14,17 +14,8 @@ namespace Shedule_diplom
     
     public partial class DaysOfWeek
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public DaysOfWeek()
-        {
-            this.Shedule = new HashSet<Shedule>();
-        }
-    
         public int ID_dayOfWeek { get; set; }
-        public string Name_dayOfWeek { get; set; }
-        public string Abbreviature_dayOfWeek { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Shedule> Shedule { get; set; }
+        public string NameDayOfWeek { get; set; }
+        public string AbbreviatureNameDayOfWeek { get; set; }
     }
 }

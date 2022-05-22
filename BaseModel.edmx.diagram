@@ -4,21 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2fcdbc323f3b4e8d886faafc3d9fda5e" Name="Diagram1" ZoomLevel="64">
-        <EntityTypeShape EntityType="RaspisanieModel.Charts" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="RaspisanieModel.DaysOfWeek" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="RaspisanieModel.DaysStatuses" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="RaspisanieModel.Departaments" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="RaspisanieModel.Employees" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="RaspisanieModel.Shedule" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="RaspisanieModel.Statuses" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="RaspisanieModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
-        <AssociationConnector Association="RaspisanieModel.FK_Shedule_Charts" ManuallyRouted="false" />
-        <AssociationConnector Association="RaspisanieModel.FK_Shedule_DaysOfWeek" ManuallyRouted="false" />
-        <AssociationConnector Association="RaspisanieModel.FK_Shedule_DaysStatuses" ManuallyRouted="false" />
-        <AssociationConnector Association="RaspisanieModel.FK_Employees_Departaments" ManuallyRouted="false" />
-        <AssociationConnector Association="RaspisanieModel.FK_Employees_Statuses" ManuallyRouted="false" />
-        <AssociationConnector Association="RaspisanieModel.FK_Shedule_Employees" ManuallyRouted="false" />
+      <Diagram DiagramId="a446911abd1347bd883ed7c4dd10072c" Name="Diagram1">
+        <EntityTypeShape EntityType="RaspisanieeModel.Charts" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="RaspisanieeModel.DaysOfWeek" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RaspisanieeModel.DaysStatuses" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RaspisanieeModel.Departaments" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RaspisanieeModel.Employees" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="RaspisanieeModel.Shedule" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RaspisanieeModel.Statuses" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RaspisanieeModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="RaspisanieeModel.FK_Employees_Charts" ManuallyRouted="false" />
+        <AssociationConnector Association="RaspisanieeModel.FK_Shedule_DaysStatuses" ManuallyRouted="false" />
+        <AssociationConnector Association="RaspisanieeModel.FK_Shedule_DaysStatuses1" ManuallyRouted="false" />
+        <AssociationConnector Association="RaspisanieeModel.FK_Employees_Departaments" ManuallyRouted="false" />
+        <AssociationConnector Association="RaspisanieeModel.FK_Employees_Statuses" ManuallyRouted="false" />
+        <AssociationConnector Association="RaspisanieeModel.FK_Shedule_Employees1" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

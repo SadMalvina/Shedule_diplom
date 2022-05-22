@@ -17,13 +17,13 @@ namespace Shedule_diplom
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Charts()
         {
-            this.Shedule = new HashSet<Shedule>();
+            this.Employees = new HashSet<Employees>();
         }
     
         public int ID_chart { get; set; }
-        public string Chart_name { get; set; }
+        public string Name_chart { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Shedule> Shedule { get; set; }
+        public virtual ICollection<Employees> Employees { get; set; }
     }
 }

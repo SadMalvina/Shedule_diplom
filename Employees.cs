@@ -30,6 +30,7 @@ namespace Shedule_diplom
         public string NickName { get; set; }
         public string Password { get; set; }
     
+        public virtual Charts Charts { get; set; }
         public virtual Departaments Departaments { get; set; }
         public virtual Statuses Statuses { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

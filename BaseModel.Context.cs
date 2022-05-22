@@ -13,24 +13,24 @@ namespace Shedule_diplom
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class RaspisanieEntities1 : DbContext
+    public partial class RaspisanieeEntities : DbContext
     {
+        private static RaspisanieeEntities _context;
 
-        private static RaspisanieEntities1 _context;
-
-        public RaspisanieEntities1()
-            : base("name=RaspisanieEntities1")
+        public RaspisanieeEntities()
+            : base("name=RaspisanieeEntities")
         {
+
         }
 
-        public static RaspisanieEntities1 GetContext()
+        public static RaspisanieeEntities GetContext()
         {
             if (_context == null)
-                _context = new RaspisanieEntities1();
+                _context = new RaspisanieeEntities();
 
             return _context;
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

@@ -18,13 +18,16 @@ namespace Shedule_diplom
         public DaysStatuses()
         {
             this.Shedule = new HashSet<Shedule>();
+            this.Shedule1 = new HashSet<Shedule>();
         }
     
         public int ID_statusDay { get; set; }
-        public string Name_statusDay { get; set; }
-        public string Abbreviaion_name_statusDay { get; set; }
+        public string NameStatusDay { get; set; }
+        public string AbbreviatureStatusDay { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Shedule> Shedule { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Shedule> Shedule1 { get; set; }
     }
 }

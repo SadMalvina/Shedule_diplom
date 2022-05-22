@@ -27,7 +27,7 @@ namespace Shedule_diplom
 
         private void DepartmentSheduleChief_Click(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new DepartmentShedule((sender as Button).DataContext as Shedule));
+            Manager.MainFrame.Navigate(new DepartmentShedule());
         }
 
         private void MySheduleChief_Click(object sender, RoutedEventArgs e)

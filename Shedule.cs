@@ -14,16 +14,15 @@ namespace Shedule_diplom
     
     public partial class Shedule
     {
-        public int ID_record { get; set; }
-        public Nullable<int> ID_employee { get; set; }
+        public int ID_employee { get; set; }
         public Nullable<int> ID_chart { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
-        public Nullable<int> ID_statusDay { get; set; }
-        public Nullable<int> ID_dayOfWeek { get; set; }
+        public Nullable<int> ID_status_Saturday { get; set; }
+        public Nullable<int> ID_status_Sunday { get; set; }
+        public Nullable<int> NumberOfWeek { get; set; }
+        public int ID_record { get; set; }
     
-        public virtual Charts Charts { get; set; }
-        public virtual DaysOfWeek DaysOfWeek { get; set; }
         public virtual DaysStatuses DaysStatuses { get; set; }
+        public virtual DaysStatuses DaysStatuses1 { get; set; }
         public virtual Employees Employees { get; set; }
     }
 }

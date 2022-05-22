@@ -32,93 +32,44 @@ Title="DepartmentShedule" IsVisibleChanged="Page_IsVisibleChanged">
         <TextBlock Grid.ColumnSpan="2"/>
         <DataGrid x:Name="DGridShedule" Grid.Row="3" Grid.ColumnSpan="10" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTemplateColumn Header="ФИО" Width="200" x:Name="FIO">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel x:Name="St" Orientation="Horizontal">
-                                <TextBlock x:Name="SecondName" FontFamily="Comic Sans MS" Visibility="Visible" VerticalAlignment="Center"/>
-                                <TextBlock Text=" "/>
-                                <TextBlock x:Name="NameTextBlock"/>
-                                <TextBlock Text=" "/>
-                                <TextBlock x:Name="MiddleNameTextBlock"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Должность" Width="150">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock x:Name="Status_User"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="ПН" Width="60">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock x:Name="MondayStatus" Text="{Binding DaysStatuses.Abbreviaion_name_statusDay}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="ВТ" Width="60">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock x:Name="TuesdayStatus" Text="{Binding}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="СР" Width="60">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock x:Name="WednesdayStatus" Text="{Binding DaysStatuses.Abbreviaion_name_statusDay}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="ЧТ" Width="60">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock x:Name="ThursdayStatus" Text="{Binding DaysStatuses.Abbreviaion_name_statusDay}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="ПТ" Width="60">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock x:Name="FridayStatus" Text="{Binding DaysStatuses.Abbreviaion_name_statusDay}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="СБ" Width="60">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel
-Orientation="Horizontal">
-                                <TextBlock x:Name="SaturdayStatus" Text="{Binding DaysStatuses.Abbreviaion_name_statusDay}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="ВС" Width="60">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock x:Name="SundayStatus" Text="{Binding DaysStatuses.Abbreviaion_name_statusDay}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="ФИО" Width="200" Binding="{Binding Path=Full_name}"  x:Name="FIO"/>
+                <DataGridTextColumn Header="Должность" Width="100" Binding="{Binding Statuses.Status_name}"/>
+                <DataGridTextColumn  Width="60">
+                    <DataGridTextColumn.Header>
+                        <TextBlock  x:Name="Pn"/>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn  Width="60">
+                    <DataGridTextColumn.Header>
+                        <TextBlock  x:Name="Vt"/>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn  Width="60">
+                    <DataGridTextColumn.Header>
+                        <TextBlock  x:Name="Sr"/>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn  Width="60">
+                    <DataGridTextColumn.Header>
+                        <TextBlock  x:Name="Cht"/>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn  Width="60">
+                    <DataGridTextColumn.Header>
+                        <TextBlock  x:Name="Pt"/>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn  Width="60">
+                    <DataGridTextColumn.Header>
+                        <TextBlock  x:Name="Sb"/>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn  Width="60">
+                    <DataGridTextColumn.Header>
+                        <TextBlock  x:Name="Vs"/>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
             </DataGrid.Columns>
-
         </DataGrid>
-
     </Grid>
 </Page>

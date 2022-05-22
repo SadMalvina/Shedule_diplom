@@ -21,8 +21,8 @@ namespace Shedule_diplom
         }
     
         public int ID_departament { get; set; }
-        public string Departament_name { get; set; }
-        public Nullable<int> ID_departamentHead { get; set; }
+        public string NameDepartament { get; set; }
+        public Nullable<int> ID_DepartamentHead { get; set; }
         public Nullable<decimal> Salary_per_hour_of_work { get; set; }
         public Nullable<int> Hourly_rate { get; set; }
         public Nullable<decimal> Salary_per_hour_of_sick_leave { get; set; }
